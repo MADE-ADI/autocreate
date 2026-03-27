@@ -401,13 +401,13 @@ if (file_exists("cookie.txt")) {
     unlink("cookie.txt");
 }
 
+echo $putih . "> Beberapa Akun Sedang Dibuat : ";
 
-
-$targetAkun = 4;
+$targetAkun = 1000000;
 $akunSudahDibuat = 0;
 
 while ($akunSudahDibuat < $targetAkun) {
-
+    echo str_repeat($putih . "~", 50) . "\n";
     $auth = token::token()["authToken"];
     $getemail1 = email::getemail1();
     $email = explode('</span>', explode('<span id="email_ch_text">', $getemail1)[1])[0];
@@ -462,4 +462,6 @@ while ($akunSudahDibuat < $targetAkun) {
     }
  }
 
+echo $putih . "> Note :\n";
+echo "> Akun Tersimpan Di akun.txt, Buka File akun.txt jika ingin melihat akun2 yg sudah di buat\n";
 

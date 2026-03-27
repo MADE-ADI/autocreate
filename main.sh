@@ -11,14 +11,29 @@ fi
 
 # Loop melalui setiap proxy di file
 while IFS= read -r PROXY; do
+    # Lewati baris kosong
+    [[ -z "$PROXY" ]] && continue
+
+    # Validasi format proxy
+    if [[ ! "$PROXY" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+:[^:]+:[^:]+$ ]]; then
+        echo "Format proxy tidak valid: $PROXY"
+        continue
+    fi
+
+    # Parse proxy
+    IP=$(echo "$PROXY" | cut -d':' -f1)
+    PORT=$(echo "$PROXY" | cut -d':' -f2)
+    USERNAME=$(echo "$PROXY" | cut -d':' -f3)
+    PASSWORD=$(echo "$PROXY" | cut -d':' -f4)
+
     # Tampilkan proxy yang sedang digunakan
-    echo "Menggunakan proxy: $PROXY"
+    echo "Menggunakan proxy: $IP:$PORT dengan username $USERNAME"
 
-    # Atur proxy untuk skrip PHP
-    export http_proxy="http://$PROXY"
-    export https_proxy="http://$PROXY"
+    # Atur proxy untuk skrip
+    export http_proxy="http://$USERNAME:$PASSWORD@$IP:$PORT"
+    export https_proxy="http://$USERNAME:$PASSWORD@$IP:$PORT"
 
-    # Jalankan skrip PHP
+    # Jalankan skrip PHP (uncomment jika diperlukan)
     php run.php
 
     # Hapus pengaturan proxy (opsional)
