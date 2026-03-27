@@ -531,9 +531,9 @@ func main() {
 					log(MERAH, "Gagal, lanjut...")
 				}
 
-				// Jeda antar akun: 2-4 menit
+				// Jeda antar akun: 3-5 menit
 				if k < jumlahAkun-1 {
-					jeda := rand.Intn(121) + 120
+					jeda := rand.Intn(121) + 180
 					log(KUNING, fmt.Sprintf("Jeda antar akun: %dm %ds", jeda/60, jeda%60))
 					time.Sleep(time.Duration(jeda) * time.Second)
 				}
@@ -549,9 +549,9 @@ func main() {
 
 		log(HIJAU, fmt.Sprintf("Batch #%d selesai | Total akun dibuat: %d", batchNum, totalAkun))
 
-		// Jeda antar batch: 20-30 menit
+		// Jeda antar batch: 10 menit
 		if i+batchSize < len(proxies) {
-			jeda := rand.Intn(601) + 1200
+			jeda := 600
 			next := time.Now().Add(time.Duration(jeda) * time.Second)
 			log(KUNING, fmt.Sprintf("Jeda antar batch: %dm %ds", jeda/60, jeda%60))
 			log(KUNING, fmt.Sprintf("Lanjut batch berikutnya pukul: %s", next.Format("15:04:05")))

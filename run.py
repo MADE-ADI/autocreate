@@ -386,9 +386,9 @@ def main():
                 if not success:
                     log(MERAH, f"Gagal, lanjut...")
 
-                # Jeda antar akun: 2-4 menit
+                # Jeda antar akun: 3-5 menit
                 if k < jumlah_akun - 1:
-                    jeda = random.randint(120, 240)
+                    jeda = random.randint(180, 300)
                     log(KUNING, f"Jeda antar akun: {jeda // 60}m {jeda % 60}s")
                     time.sleep(jeda)
 
@@ -400,9 +400,9 @@ def main():
 
         log(HIJAU, f"Batch #{batch_num} selesai | Total akun dibuat: {total_akun}")
 
-        # Jeda antar batch: 20-30 menit
+        # Jeda antar batch: 10 menit
         if i + batch_size < len(proxies):
-            jeda = random.randint(1200, 1800)
+            jeda = 600
             menit = jeda // 60
             detik = jeda % 60
             log(KUNING, f"Jeda antar batch: {menit}m {detik}s")
