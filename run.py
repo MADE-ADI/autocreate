@@ -400,15 +400,6 @@ def main():
 
         log(HIJAU, f"Batch #{batch_num} selesai | Total akun dibuat: {total_akun}")
 
-        # Jeda antar batch: 10 menit
-        if i + batch_size < len(proxies):
-            jeda = 600
-            menit = jeda // 60
-            detik = jeda % 60
-            log(KUNING, f"Jeda antar batch: {menit}m {detik}s")
-            log(KUNING, f"Lanjut batch berikutnya pukul: "
-                        f"{datetime.fromtimestamp(time.time() + jeda).strftime('%H:%M:%S')}")
-            time.sleep(jeda)
 
     print(f"\n{HIJAU}{'=' * 50}")
     log(HIJAU, f"SELESAI! Total akun dibuat: {total_akun}")
