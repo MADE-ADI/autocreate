@@ -303,7 +303,7 @@ func (z *Zepeto) emailConfirm(email, otp string) map[string]interface{} {
 
 func (z *Zepeto) register(email string) map[string]interface{} {
 	return z.postAuth("UserRegisterRequest_v2", map[string]string{
-		"userName": email, "displayName": email, "password": "Nojal3123",
+		"userName": email, "displayName": email, "password": "zxcvbnm.",
 	})
 }
 
@@ -312,7 +312,7 @@ func (z *Zepeto) initZepetoID(zepetoID string) {
 }
 
 func (z *Zepeto) login(zepetoID string) {
-	z.postAuth("AuthenticationRequest_v2", map[string]string{"userId": zepetoID, "password": "Nojal3123"})
+	z.postAuth("AuthenticationRequest_v2", map[string]string{"userId": zepetoID, "password": "zxcvbnm."})
 }
 
 // ============================== FAKE EMAIL ==============================
